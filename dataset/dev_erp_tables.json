@@ -13,11 +13,7 @@
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"typeProperties": {
-			"schema": "dev_erp",
-			"table": {
-				"value": "@dataset().tableName",
-				"type": "Expression"
-			}
+			"tableName": "[dbo].[dim_product]"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"

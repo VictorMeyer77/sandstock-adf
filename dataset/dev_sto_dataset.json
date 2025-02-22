@@ -22,6 +22,14 @@
 		"annotations": [],
 		"type": "AzureBlob",
 		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": ",",
+				"rowDelimiter": "",
+				"treatEmptyAsNull": true,
+				"skipLineCount": 0,
+				"firstRowAsHeader": false
+			},
 			"fileName": {
 				"value": "@dataset().fileName",
 				"type": "Expression"
