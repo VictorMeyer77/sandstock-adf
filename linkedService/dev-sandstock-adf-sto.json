@@ -1,0 +1,15 @@
+{
+	"name": "dev-sandstock-adf-sto",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"connectVia": {
+			"referenceName": "dev-sandstock-runtime",
+			"type": "IntegrationRuntimeReference"
+		},
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"serviceEndpoint": "https://devsandstocksto.blob.core.windows.net/"
+		},
+		"annotations": []
+	}
+}
