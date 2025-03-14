@@ -29,10 +29,10 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "dev_erp_tables",
+						"referenceName": "dev_erp_table",
 						"type": "DatasetReference",
 						"parameters": {
-							"tableName": "[dbo].[dim_product]"
+							"tableName": "dim_product"
 						}
 					}
 				],
@@ -77,10 +77,10 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "dev_erp_tables",
+						"referenceName": "dev_erp_table",
 						"type": "DatasetReference",
 						"parameters": {
-							"tableName": "[dbo].[dim_partner]"
+							"tableName": "dim_partner"
 						}
 					}
 				],
@@ -125,10 +125,10 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "dev_erp_tables",
+						"referenceName": "dev_erp_table",
 						"type": "DatasetReference",
 						"parameters": {
-							"tableName": "[dbo].[dim_warehouse]"
+							"tableName": "dim_warehouse"
 						}
 					}
 				],
@@ -184,10 +184,10 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "dev_erp_tables",
+						"referenceName": "dev_erp_table",
 						"type": "DatasetReference",
 						"parameters": {
-							"tableName": "[dbo].[fact_order]"
+							"tableName": "fact_order"
 						}
 					}
 				],
