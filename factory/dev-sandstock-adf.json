@@ -1,0 +1,9 @@
+{
+	"name": "dev-sandstock-adf",
+	"location": "francecentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "3eb9e808-b989-4560-910e-1f57f6a9ca7e",
+		"tenantId": "7b9f8ebb-f26f-463b-b786-27eb1e7b5d6a"
+	}
+}
