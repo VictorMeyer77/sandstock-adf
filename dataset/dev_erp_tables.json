@@ -1,0 +1,24 @@
+{
+	"name": "dev_erp_tables",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "dev-sandstock-adf-sql",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tableName": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"typeProperties": {
+			"schema": "dev_erp",
+			"table": {
+				"value": "@dataset().tableName",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
