@@ -2,7 +2,7 @@
 
 ## Branching Model
 
-This repository is the managed Azure Data Factory of sandstock.
+This repository is the managed Azure Data Factory of sandstock. 
 
 
 ## TODO
@@ -12,3 +12,4 @@ This repository is the managed Azure Data Factory of sandstock.
 - [ ] Merge working branch with main branch (We will just keep the pipelines/ folder from the working branch)
 - [ ] Merge main branch in adf_publish
 - [ ] Publish adf_publish mode on ADF live mode
+- [ ] Tokenize environment
