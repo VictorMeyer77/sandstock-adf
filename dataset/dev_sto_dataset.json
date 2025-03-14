@@ -1,0 +1,45 @@
+{
+	"name": "dev_sto_dataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "dev-sandstock-adf-sto",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"container": {
+				"type": "String",
+				"defaultValue": "raw"
+			},
+			"fileName": {
+				"type": "String",
+				"defaultValue": "file.parquet"
+			},
+			"folderPath": {
+				"type": "String",
+				"defaultValue": "folder/"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().fileName",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().folderPath",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().container",
+					"type": "Expression"
+				}
+			},
+			"compressionCodec": ""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
