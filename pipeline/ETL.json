@@ -42,11 +42,11 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"container": "raw",
-							"fileName": {
+							"file_name": {
 								"value": "@concat(formatDateTime(utcNow(), 'yyyy_MM_dd'), '.parquet')",
 								"type": "Expression"
 							},
-							"folderPath": "erp/dim_product/"
+							"folder_path": "erp/dim_product/"
 						}
 					}
 				]
@@ -90,11 +90,11 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"container": "raw",
-							"fileName": {
+							"file_name": {
 								"value": "@concat(formatDateTime(utcNow(), 'yyyy_MM_dd'), '.parquet')",
 								"type": "Expression"
 							},
-							"folderPath": "erp/dim_partner/"
+							"folder_path": "erp/dim_partner/"
 						}
 					}
 				]
@@ -138,11 +138,11 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"container": "raw",
-							"fileName": {
+							"file_name": {
 								"value": "@concat(formatDateTime(utcNow(), 'yyyy_MM_dd'), '.parquet')",
 								"type": "Expression"
 							},
-							"folderPath": "erp/dim_warehouse/"
+							"folder_path": "erp/dim_warehouse/"
 						}
 					}
 				]
@@ -197,11 +197,11 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"container": "raw",
-							"fileName": {
+							"file_name": {
 								"value": "@concat(formatDateTime(utcNow(), 'yyyy_MM_dd'), '.parquet')",
 								"type": "Expression"
 							},
-							"folderPath": "erp/fact_order/"
+							"folder_path": "erp/fact_order/"
 						}
 					}
 				]
