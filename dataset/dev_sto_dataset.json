@@ -12,7 +12,7 @@
 			},
 			"fileName": {
 				"type": "String",
-				"defaultValue": "file.csv"
+				"defaultValue": "file.parquet"
 			},
 			"folderPath": {
 				"type": "String",
@@ -20,17 +20,26 @@
 			}
 		},
 		"annotations": [],
-		"type": "AzureBlob",
+		"type": "Parquet",
 		"typeProperties": {
-			"fileName": {
-				"value": "@dataset().fileName",
-				"type": "Expression"
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().fileName",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().folderPath",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().container",
+					"type": "Expression"
+				}
 			},
-			"folderPath": {
-				"value": "@concat(dataset().container, '/', dataset().folderPath)",
-				"type": "Expression"
-			}
-		}
+			"compressionCodec": ""
+		},
+		"schema": []
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }

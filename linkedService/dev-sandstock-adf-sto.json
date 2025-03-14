@@ -6,9 +6,9 @@
 			"referenceName": "dev-sandstock-runtime",
 			"type": "IntegrationRuntimeReference"
 		},
-		"type": "AzureBlobStorage",
+		"type": "AzureBlobFS",
 		"typeProperties": {
-			"serviceEndpoint": "https://devsandstocksto.blob.core.windows.net/"
+			"url": "https://devsandstocksto.dfs.core.windows.net/"
 		},
 		"annotations": []
 	}
