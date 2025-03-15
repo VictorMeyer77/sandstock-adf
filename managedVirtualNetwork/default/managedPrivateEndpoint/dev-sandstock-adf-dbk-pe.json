@@ -1,0 +1,10 @@
+{
+	"name": "dev-sandstock-adf-dbk-pe",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/744567c0-38cf-48d2-a853-28f0c466ed29/resourceGroups/dev-sandstock-rg/providers/Microsoft.Databricks/workspaces/dev-sandstock-dbk",
+		"groupId": "databricks_ui_api",
+		"fqdns": [
+			"adb-4012671432711818.18.azuredatabricks.net"
+		]
+	}
+}
