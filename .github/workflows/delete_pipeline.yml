@@ -1,8 +1,11 @@
-name: Delete pipeline
+name: Delete Pipeline
 
 on:
   workflow_dispatch:
     inputs:
+      env:
+        type: environment
+        description: "Select the environment"
       name:
         description: "Pipeline name. 'all' to delete all pipelines"
         required: true
@@ -11,7 +14,7 @@ on:
 jobs:
   delete-pipeline:
     runs-on: ubuntu-latest
-    environment: dev
+    environment: ${{ inputs.env }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -21,8 +24,14 @@ jobs:
       with:
         creds: '{"clientId":"${{ secrets.AZURE_CLIENT_ID }}","clientSecret":"${{ secrets.AZURE_CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.AZURE_TENANT_ID }}"}'
 
-    - name: Check if pipeline exists
+    - name: Delete ${{ inputs.name }} pipeline
       run: |
-        if [ "${{ inputs.name }}" != "all" ]; then
-          az datafactory pipeline show --factory-name "${{ vars.ENV }}-sandstock-adf" --resource-group "${{ vars.ENV }}-sandstock-rg" --name ${{ inputs.name }}
+        if [ "${{ inputs.name }}" = "all" ]; then
+          pipelines=$(az datafactory pipeline list --factory-name "${{ vars.ENV }}-sandstock-adf" --resource-group "${{ vars.ENV }}-sandstock-rg" --query "[].name" --output tsv)
+        
+          for pipeline in $pipelines; do
+             az datafactory pipeline delete --factory-name "${{ vars.ENV }}-sandstock-adf" --resource-group "${{ vars.ENV }}-sandstock-rg" --name $pipeline
+          done
+        else
+          az datafactory pipeline delete --factory-name "${{ vars.ENV }}-sandstock-adf" --resource-group "${{ vars.ENV }}-sandstock-rg" --name ${{ inputs.name }}
         fi
