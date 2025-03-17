@@ -4,12 +4,8 @@ on:
   workflow_dispatch:
     inputs:
       env:
-        description: "Environment name"
-        required: true
-        default: "dev"
-        options:
-          - "dev"
-          - "prod"
+        type: environment
+        description: "Select the environment"
       name:
         description: "Pipeline name. 'all' to delete all pipelines"
         required: true
