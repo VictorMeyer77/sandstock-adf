@@ -32,5 +32,5 @@ jobs:
           inlineScript: |
             ls -p pipeline | grep -v / | while read -r file; do
                 file_name="${file%.*}"
-                az datafactory pipeline create --factory-name "${{ vars.ENV }}-sandstock-adf" --pipeline @pipeline/$file --name $file_name --resource-group "${{ vars.ENV }}-sandstock-rg"
+                az datafactory pipeline create --factory-name "${{ vars.ENV }}-sandstock-adf" --pipeline @pipeline/$file --name $file_name --resource-group "${{ vars.ENV }}-sandstock-rg" --only-show-errors
             done
