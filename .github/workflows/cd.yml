@@ -13,12 +13,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      #- name: Replace token in config
-      #  run: |
-      #    sed -i "s/{{ENV}}/${{ vars.ENV }}/g" sandstock/config.py
-      #    sed -i "s/{{PROJECT}}/${{ vars.PROJECT }}/g" sandstock/config.py
-      #    sed -i "s/{{TENANT_ID}}/${{ secrets.AZURE_TENANT_ID }}/g" sandstock/config.py
-      #    sed -i "s/{{SQL_DB_ADMIN_PASSWORD}}/${{ secrets.SQL_DB_ADMIN_PASSWORD }}/g" sandstock/config.py
+      - name: Replace token in config
+        run: |
+          for file in "pipeline/*"; do
+              sed -i "s/{{ENV}}/${{ vars.ENV }}/g" $file
+              sed -i "s/{{PROJECT}}/${{ vars.PROJECT }}/g" $file
+          done
 
       - name: Azure login
         uses: azure/login@v2
