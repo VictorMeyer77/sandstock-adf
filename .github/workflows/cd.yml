@@ -1,0 +1,36 @@
+name: CD
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      #- name: Replace token in config
+      #  run: |
+      #    sed -i "s/{{ENV}}/${{ vars.ENV }}/g" sandstock/config.py
+      #    sed -i "s/{{PROJECT}}/${{ vars.PROJECT }}/g" sandstock/config.py
+      #    sed -i "s/{{TENANT_ID}}/${{ secrets.AZURE_TENANT_ID }}/g" sandstock/config.py
+      #    sed -i "s/{{SQL_DB_ADMIN_PASSWORD}}/${{ secrets.SQL_DB_ADMIN_PASSWORD }}/g" sandstock/config.py
+
+      - name: Azure login
+        uses: azure/login@v2
+        with:
+          creds: '{"clientId":"${{ secrets.AZURE_CLIENT_ID }}","clientSecret":"${{ secrets.AZURE_CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.AZURE_TENANT_ID }}"}'
+
+      - name: Azure CLI script
+        uses: azure/cli@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
+            ls -p pipeline | grep -v / | while read -r file; do
+                file_name="${file%.*}"
+                az datafactory pipeline create --factory-name "dev-sandstock-adf" --pipeline @pipeline/$file --name $file_name --resource-group "dev-sandstock-rg"
+            done
