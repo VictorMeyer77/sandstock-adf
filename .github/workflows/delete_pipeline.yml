@@ -30,8 +30,8 @@ jobs:
           pipelines=$(az datafactory pipeline list --factory-name "${{ vars.ENV }}-sandstock-adf" --resource-group "${{ vars.ENV }}-sandstock-rg" --query "[].name" --output tsv)
         
           for pipeline in $pipelines; do
-             az datafactory pipeline delete --factory-name "${{ vars.ENV }}-sandstock-adf" --resource-group "${{ vars.ENV }}-sandstock-rg" --name $pipeline
+             az datafactory pipeline delete --factory-name "${{ vars.ENV }}-sandstock-adf" --resource-group "${{ vars.ENV }}-sandstock-rg" --name $pipeline --yes
           done
         else
-          az datafactory pipeline delete --factory-name "${{ vars.ENV }}-sandstock-adf" --resource-group "${{ vars.ENV }}-sandstock-rg" --name ${{ inputs.name }}
+          az datafactory pipeline delete --factory-name "${{ vars.ENV }}-sandstock-adf" --resource-group "${{ vars.ENV }}-sandstock-rg" --name ${{ inputs.name }} --yes
         fi

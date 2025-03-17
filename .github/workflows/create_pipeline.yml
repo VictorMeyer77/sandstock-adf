@@ -12,7 +12,7 @@ on:
         default: "all"
 
 jobs:
-  deploy:
+  create-pipeline:
     runs-on: ubuntu-latest
     environment: ${{ inputs.env }}
     steps:
