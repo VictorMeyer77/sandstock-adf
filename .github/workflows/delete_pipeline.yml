@@ -1,0 +1,28 @@
+name: Delete pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Pipeline name. 'all' to delete all pipelines"
+        required: true
+        default: "all"
+
+jobs:
+  example-job:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Azure login
+      uses: azure/login@v2
+      with:
+        creds: '{"clientId":"${{ secrets.AZURE_CLIENT_ID }}","clientSecret":"${{ secrets.AZURE_CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.AZURE_TENANT_ID }}"}'
+
+    - name: Check if pipeline exists
+      run: |
+        if [ "${{ inputs.name }}" != "all" ]; then
+          az datafactory pipeline show --factory-name "${{ vars.ENV }}-sandstock-adf" --resource-group "${{ vars.ENV }}-sandstock-rg" --name ${{ inputs.name }}
+        fi
