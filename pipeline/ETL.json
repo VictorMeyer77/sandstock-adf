@@ -168,11 +168,11 @@
 						"partitionSettings": {
 							"partitionColumnName": "created_at",
 							"partitionUpperBound": {
-								"value": "@formatDateTime(startOfDay(utcNow()), 'yyyy-MM-dd HH:mm:ss')",
+								"value": "@formatDateTime(startOfDay(addDays(utcNow(), 1)), 'yyyy-MM-dd HH:mm:ss')",
 								"type": "Expression"
 							},
 							"partitionLowerBound": {
-								"value": "@formatDateTime(startOfDay(addDays(utcNow(), 1)), 'yyyy-MM-dd HH:mm:ss')",
+								"value": "@formatDateTime(startOfDay(utcNow()), 'yyyy-MM-dd HH:mm:ss')",
 								"type": "Expression"
 							}
 						}
