@@ -29,7 +29,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "{{ENV}}_erp_table",
+						"referenceName": "dev_erp_table",
 						"type": "DatasetReference",
 						"parameters": {
 							"table_name": "dim_product"
@@ -38,7 +38,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "{{ENV}}_sto_dataset",
+						"referenceName": "dev_sto_dataset",
 						"type": "DatasetReference",
 						"parameters": {
 							"container": "raw",
@@ -77,7 +77,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "{{ENV}}_erp_table",
+						"referenceName": "dev_erp_table",
 						"type": "DatasetReference",
 						"parameters": {
 							"table_name": "dim_partner"
@@ -86,7 +86,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "{{ENV}}_sto_dataset",
+						"referenceName": "dev_sto_dataset",
 						"type": "DatasetReference",
 						"parameters": {
 							"container": "raw",
@@ -125,7 +125,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "{{ENV}}_erp_table",
+						"referenceName": "dev_erp_table",
 						"type": "DatasetReference",
 						"parameters": {
 							"table_name": "dim_warehouse"
@@ -134,7 +134,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "{{ENV}}_sto_dataset",
+						"referenceName": "dev_sto_dataset",
 						"type": "DatasetReference",
 						"parameters": {
 							"container": "raw",
@@ -184,7 +184,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "{{ENV}}_erp_table",
+						"referenceName": "dev_erp_table",
 						"type": "DatasetReference",
 						"parameters": {
 							"table_name": "fact_order"
@@ -193,7 +193,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "{{ENV}}_sto_dataset",
+						"referenceName": "dev_sto_dataset",
 						"type": "DatasetReference",
 						"parameters": {
 							"container": "raw",
