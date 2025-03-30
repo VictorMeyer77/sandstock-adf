@@ -163,19 +163,12 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "@concat(\n'SELECT * FROM fact_order WHERE created_at >= ''',\nformatDateTime(startOfDay(utcNow()), 'yyyy-MM-dd HH:mm:ss'),\n''' AND created_at < ''',\nformatDateTime(startOfDay(addDays(utcNow(), 1)), 'yyyy-MM-dd HH:mm:ss'),\n''''\n)",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00",
-						"partitionOption": "DynamicRange",
-						"partitionSettings": {
-							"partitionColumnName": "created_at",
-							"partitionUpperBound": {
-								"value": "@formatDateTime(startOfDay(addDays(utcNow(), 1)), 'yyyy-MM-dd HH:mm:ss')",
-								"type": "Expression"
-							},
-							"partitionLowerBound": {
-								"value": "@formatDateTime(startOfDay(utcNow()), 'yyyy-MM-dd HH:mm:ss')",
-								"type": "Expression"
-							}
-						}
+						"partitionOption": "None"
 					},
 					"sink": {
 						"type": "BlobSink"
