@@ -2,9 +2,6 @@
 	"name": "dev-sandstock-adf-sto-pe",
 	"properties": {
 		"privateLinkResourceId": "/subscriptions/744567c0-38cf-48d2-a853-28f0c466ed29/resourceGroups/dev-sandstock-rg/providers/Microsoft.Storage/storageAccounts/devsandstocksto",
-		"groupId": "dfs",
-		"fqdns": [
-			"devsandstocksto.dfs.core.windows.net"
-		]
+		"groupId": "dfs"
 	}
 }
