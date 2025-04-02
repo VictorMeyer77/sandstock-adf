@@ -1,0 +1,25 @@
+{
+	"name": "dev-sandstock-erp-etl-trg",
+	"properties": {
+		"description": "Daily Trigger (1 A.M) of ERP ETL pipeline",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "TRIGGER_PLACEHOLDER",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2025-04-02T01:00:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

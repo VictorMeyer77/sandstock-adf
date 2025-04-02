@@ -10,8 +10,8 @@
 		"typeProperties": {
 			"accessToken": null,
 			"authentication": "MSI",
-			"domain": "https://adb-4012671432711818.18.azuredatabricks.net",
-			"existingClusterId": "0315-171825-qjnp6ury",
+			"domain": "https://adb-3973392633056702.2.azuredatabricks.net",
+			"existingClusterId": "0402-184817-zttqbn5k",
 			"workspaceResourceId": "/subscriptions/744567c0-38cf-48d2-a853-28f0c466ed29/resourceGroups/dev-sandstock-rg/providers/Microsoft.Databricks/workspaces/dev-sandstock-dbk"
 		},
 		"annotations": []

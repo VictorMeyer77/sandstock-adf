@@ -13,7 +13,7 @@
 				"value": "**********"
 			},
 			"password": {
-				"secretName": "dev-sandstock-sql-password",
+				"secretName": "dev-erp-db-password",
 				"store": {
 					"referenceName": "dev-sandstock-adf-kv",
 					"type": "LinkedServiceReference"
