@@ -10,6 +10,12 @@
 					"referenceName": "TRIGGER_PLACEHOLDER",
 					"type": "PipelineReference"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "ETL",
+					"type": "PipelineReference"
+				}
 			}
 		],
 		"type": "ScheduleTrigger",
