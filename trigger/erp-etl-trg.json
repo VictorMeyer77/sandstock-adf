@@ -1,5 +1,5 @@
 {
-	"name": "dev-sandstock-erp-etl-trg",
+	"name": "erp-etl-trg",
 	"properties": {
 		"description": "Daily Trigger (1 A.M) of ERP ETL pipeline",
 		"annotations": [],
