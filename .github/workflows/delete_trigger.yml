@@ -1,0 +1,37 @@
+name: Delete Trigger
+
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        type: environment
+        description: "Select the environment"
+      name:
+        description: "Trigger name. 'all' to delete all triggers"
+        required: true
+        default: "all"
+
+jobs:
+  delete-trigger:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.env }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Azure login
+      uses: azure/login@v2
+      with:
+        creds: '{"clientId":"${{ secrets.AZURE_CLIENT_ID }}","clientSecret":"${{ secrets.AZURE_CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.AZURE_TENANT_ID }}"}'
+
+    - name: Delete ${{ inputs.name }} trigger
+      run: |
+        if [ "${{ inputs.name }}" = "all" ]; then
+          triggers=$(az datafactory trigger list --factory-name "${{ vars.ENV }}-sandstock-adf" --resource-group "${{ vars.ENV }}-sandstock-rg" --query "[].name" --output tsv)
+        
+          for trigger in $triggers; do
+             az datafactory trigger delete --factory-name "${{ vars.ENV }}-sandstock-adf" --resource-group "${{ vars.ENV }}-sandstock-rg" --name $trigger --yes
+          done
+        else
+          az datafactory trigger delete --factory-name "${{ vars.ENV }}-sandstock-adf" --resource-group "${{ vars.ENV }}-sandstock-rg" --name ${{ inputs.name }} --yes
+        fi

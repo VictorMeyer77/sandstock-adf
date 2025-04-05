@@ -1,4 +1,4 @@
-name: Create Pipeline
+name: Create Trigger
 
 on:
   workflow_dispatch:
@@ -7,12 +7,12 @@ on:
         type: environment
         description: "Select the environment"
       name:
-        description: "Pipeline name. 'all' to create all pipelines"
+        description: "Trigger name. 'all' to create all triggers"
         required: true
         default: "all"
 
 jobs:
-  create-pipeline:
+  create-trigger:
     runs-on: ubuntu-latest
     environment: ${{ inputs.env }}
     steps:
@@ -21,7 +21,7 @@ jobs:
 
       - name: Replace token in config
         run: |
-          for file in "pipeline/*"; do
+          for file in "trigger/*"; do
               sed -i "s/{{ENV}}/${{ vars.ENV }}/g" $file
               sed -i "s/{{PROJECT}}/${{ vars.PROJECT }}/g" $file
           done
@@ -31,16 +31,18 @@ jobs:
         with:
           creds: '{"clientId":"${{ secrets.AZURE_CLIENT_ID }}","clientSecret":"${{ secrets.AZURE_CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.AZURE_TENANT_ID }}"}'
 
-      - name: Create ${{ inputs.name }} pipeline
+      - name: Create ${{ inputs.name }} trigger
         uses: azure/cli@v2
         with:
           azcliversion: latest
           inlineScript: |
             if [ "${{ inputs.name }}" = "all" ]; then
-                ls -p pipeline | grep -v / | while read -r file; do
+                ls -p trigger | grep -v / | while read -r file; do
                     file_name="${file%.*}"
-                    az datafactory pipeline create --factory-name "${{ vars.ENV }}-sandstock-adf" --pipeline @pipeline/$file --name $file_name --resource-group "${{ vars.ENV }}-sandstock-rg"
+                    json=$(jq ".properties" "trigger/$file")
+                    az datafactory trigger create --factory-name "${{ vars.ENV }}-sandstock-adf" --properties "$json" --name $file_name --resource-group "${{ vars.ENV }}-sandstock-rg"
                 done
             else
-                az datafactory pipeline create --factory-name "${{ vars.ENV }}-sandstock-adf" --pipeline @pipeline/"${{ inputs.name }}.json" --name ${{ inputs.name }} --resource-group "${{ vars.ENV }}-sandstock-rg"
+                json=$(jq ".properties" "${{ inputs.name }}.json")
+                az datafactory trigger create --factory-name "${{ vars.ENV }}-sandstock-adf" --properties "$json" --name ${{ inputs.name }} --resource-group "${{ vars.ENV }}-sandstock-rg"
             fi

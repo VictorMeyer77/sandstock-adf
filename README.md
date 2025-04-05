@@ -16,12 +16,14 @@ To enhance reliability, overcome ARM template limitations, and harmonize Data Fa
 
 Only the "pipeline" folder can be updated via the Azure Data Factory interface.
 
+This repository have two principal branches: `main` and `dev`. Both are the same, except the main branch is tokenized with environment variables like {{VARIABLE_NAME}}.
+
 1. When you run `terraform apply`, all Data Factory components are created, except for the pipelines.
-2. Via the Azure Data Factory interface, you can import ADF resources into the main branch.
-3. Create a new branch based on the main branch and create or update pipelines in your working branch.
-4. Before merging with the main branch, replace all your secrets and variables with GitHub Environment variable names.
-5. Deploy your pipeline in a validation environment via GitHub Actions.
-6. Once your development is validated, you can merge it into the main branch.
+2. Via the Azure Data Factory interface, you can import ADF resources into the dev branch.
+3. Create a new branch based on the dev branch and create or update pipelines in your working branch.
+4. Create a pull request between your working branch and the dev branch and merge it.
+5. Create a release branch based on the dev branch and replace all your environment variable with {{VARIABLE_NAME}}
+6. Create a pull request between the release branch and the main branch and merge it.
 7. With GitHub Actions, publish the new pipeline.
 8. To destroy the infrastructure using the `terraform destroy` command, you should remove all pipelines. This can also be achieved using GitHub Actions.
 
