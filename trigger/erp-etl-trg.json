@@ -5,12 +5,7 @@
 		"annotations": [],
 		"runtimeState": "Started",
 		"pipelines": [
-			{
-				"pipelineReference": {
-					"referenceName": "TRIGGER_PLACEHOLDER",
-					"type": "PipelineReference"
-				}
-			}
+
 		],
 		"type": "ScheduleTrigger",
 		"typeProperties": {
