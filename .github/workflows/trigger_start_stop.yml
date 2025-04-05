@@ -1,4 +1,4 @@
-name: Start Or Stop Trigger
+name: Start or Stop Trigger
 
 on:
   workflow_dispatch:
@@ -6,8 +6,8 @@ on:
       env:
         type: environment
         description: "Select the environment"
-      choice:
-        type: action
+      action:
+        type: choice
         description: "Start or stop trigger"
         options:
         - start
