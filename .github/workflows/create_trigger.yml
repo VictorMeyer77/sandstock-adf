@@ -43,6 +43,6 @@ jobs:
                     az datafactory trigger create --factory-name "${{ vars.ENV }}-sandstock-adf" --properties "$json" --name $file_name --resource-group "${{ vars.ENV }}-sandstock-rg"
                 done
             else
-                json=$(jq ".properties" "${{ inputs.name }}.json")
+                json=$(jq ".properties" "trigger/${{ inputs.name }}.json")
                 az datafactory trigger create --factory-name "${{ vars.ENV }}-sandstock-adf" --properties "$json" --name ${{ inputs.name }} --resource-group "${{ vars.ENV }}-sandstock-rg"
             fi
