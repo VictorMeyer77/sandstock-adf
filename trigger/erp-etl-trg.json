@@ -7,7 +7,7 @@
 		"pipelines": [
 			{
 				"pipelineReference": {
-					"referenceName": "ETL",
+					"referenceName": "ERP_ETL",
 					"type": "PipelineReference"
 				}
 			}
