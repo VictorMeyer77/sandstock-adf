@@ -1,0 +1,36 @@
+{
+	"name": "ERP_Transform",
+	"properties": {
+		"description": "Apply business rules to ERP extraction.",
+		"activities": [
+			{
+				"name": "Workflow",
+				"description": "Launch spark transformations.",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 1,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Repos/dev/sandstock-databricks/erp/workflow",
+					"baseParameters": {
+						"env": "dev"
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "dev-sandstock-adf-dbk",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "ERP"
+		},
+		"annotations": []
+	}
+}

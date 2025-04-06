@@ -5,7 +5,12 @@
 		"annotations": [],
 		"runtimeState": "Started",
 		"pipelines": [
-
+			{
+				"pipelineReference": {
+					"referenceName": "ERP_ETL",
+					"type": "PipelineReference"
+				}
+			}
 		],
 		"type": "ScheduleTrigger",
 		"typeProperties": {
