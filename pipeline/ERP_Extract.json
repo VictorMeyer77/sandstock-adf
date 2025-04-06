@@ -1,7 +1,7 @@
 {
-	"name": "ETL",
+	"name": "ERP_Extract",
 	"properties": {
-		"description": "Bronze, silver and gold for erp tables",
+		"description": "Extract ERP data from Azure SQL to blob storage.",
 		"activities": [
 			{
 				"name": "DimProductRaw",

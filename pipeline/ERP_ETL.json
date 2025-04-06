@@ -1,0 +1,53 @@
+{
+	"name": "ERP_ETL",
+	"properties": {
+		"description": "Extract and transform ERP data.",
+		"activities": [
+			{
+				"name": "Extract",
+				"description": "Launch ERP_Extract.",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "ERP_Extract",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Transform",
+				"description": "Launch ERP_Transform.",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Extract",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "ERP_Transform",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "ERP"
+		},
+		"annotations": []
+	}
+}
