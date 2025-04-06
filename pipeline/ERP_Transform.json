@@ -17,13 +17,13 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Repos/dev/sandstock-databricks/erp/workflow",
+					"notebookPath": "/Repos/{{ENV}}/sandstock-databricks/erp/workflow",
 					"baseParameters": {
-						"env": "dev"
+						"env": "{{ENV}}"
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "dev-sandstock-adf-dbk",
+					"referenceName": "{{ENV}}-sandstock-adf-dbk",
 					"type": "LinkedServiceReference"
 				}
 			}
